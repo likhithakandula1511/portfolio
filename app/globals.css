@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-bg text-text-primary antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-bg;
+  }
+}
+
+@layer utilities {
+  .section-container {
+    @apply mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-[70px] sm:py-24 lg:py-[120px];
+  }
+
+  .glass {
+    background: rgb(15 23 42 / 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgb(34 211 238 / 0.14);
+  }
+
+  .glass-strong {
+    background: rgb(15 23 42 / 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgb(34 211 238 / 0.2);
+  }
+
+  .glass-nav {
+    background: rgba(5, 8, 22, 0.78);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(34, 211, 238, 0.22);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  .nav-logo-glow {
+    text-shadow: 0 0 12px rgba(34, 211, 238, 0.35);
+  }
+
+  .nav-link-active {
+    color: #ffffff;
+    background: rgba(34, 211, 238, 0.12);
+    border: 1px solid rgba(34, 211, 238, 0.18);
+    box-shadow: 0 0 18px rgba(34, 211, 238, 0.15);
+  }
+
+  .text-gradient-brand {
+    background-image: linear-gradient(
+      90deg,
+      #22d3ee 0%,
+      #3b82f6 50%,
+      #8b5cf6 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Ambient background system — shared visual language across all sections */
+  .bg-ambient {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+  }
+
+  .bg-ambient::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    background-image: radial-gradient(
+        circle at 50% 0%,
+        rgb(59 130 246 / 0.16),
+        transparent 45%
+      ),
+      radial-gradient(circle at 15% 20%, rgb(34 211 238 / 0.1), transparent 35%),
+      radial-gradient(circle at 85% 30%, rgb(59 130 246 / 0.1), transparent 35%),
+      radial-gradient(
+        circle at 50% 90%,
+        rgb(139 92 246 / 0.08),
+        transparent 40%
+      );
+  }
+
+  .particles {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(0.5px);
+    animation: particle-float 14s ease-in-out infinite;
+  }
+}
+
+@keyframes particle-float {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(12px, -18px);
+    opacity: 0.9;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,19 @@
+<svg width="800" height="500" viewBox="0 0 800 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B1226"/>
+      <stop offset="100%" stop-color="#050816"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#22D3EE"/>
+      <stop offset="50%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <rect x="0" y="0" width="800" height="4" fill="url(#accent)"/>
+  <circle cx="400" cy="220" r="46" fill="none" stroke="#1E3A5F" stroke-width="2"/>
+  <path d="M382 222l12 12 24-28" fill="none" stroke="#22D3EE" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="400" y="312" font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="#F8FAFC" text-anchor="middle">Project Screenshot</text>
+  <text x="400" y="340" font-family="Arial, sans-serif" font-size="14" fill="#718096" text-anchor="middle">Replace this image in /public/projects</text>
+</svg>
