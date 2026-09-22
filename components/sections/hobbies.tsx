@@ -2,7 +2,23 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { Particles } from "@/components/ui/particles";
 import { Waves } from "@/components/ui/waves";
+import { AccentCard } from "@/components/ui/accent-card";
+import {
+  DanceIcon,
+  YouTubeIcon,
+  MicrophoneIcon,
+  CameraIcon,
+  VideoEditIcon,
+} from "@/components/ui/icons";
 import portfolioData from "@/data/portfolio";
+
+const HOBBY_ICONS: Record<string, typeof DanceIcon> = {
+  Dance: DanceIcon,
+  "YouTube Channel": YouTubeIcon,
+  Singing: MicrophoneIcon,
+  "Content Creation": CameraIcon,
+  "Video Editing": VideoEditIcon,
+};
 
 export function Hobbies() {
   const { hobbies } = portfolioData;
@@ -23,14 +39,12 @@ export function Hobbies() {
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {hobbies.map((hobby, index) => (
             <Reveal key={hobby.title} delay={index * 80}>
-              <div className="glass h-full rounded-2xl p-6 shadow-card transition-all duration-200 hover:-translate-y-1 hover:border-accent/40 hover:shadow-glow">
-                <h3 className="text-base font-semibold text-text-primary">
-                  {hobby.title}
-                </h3>
-                <p className="mt-2 text-sm text-text-secondary">
-                  {hobby.description}
-                </p>
-              </div>
+              <AccentCard
+                accent={hobby.accent}
+                icon={HOBBY_ICONS[hobby.title] ?? DanceIcon}
+                title={hobby.title}
+                description={hobby.description}
+              />
             </Reveal>
           ))}
         </div>

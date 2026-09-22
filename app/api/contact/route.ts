@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { Resend } from "resend";
 
 interface ContactPayload {
   name: string;
@@ -23,14 +24,20 @@ function isValidPayload(data: unknown): data is ContactPayload {
   );
 }
 
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 /**
- * Contact form submission endpoint.
- *
- * This is a stub: it validates input and returns success without sending
- * an email. To go live, connect a provider (Resend, SendGrid, Postmark,
- * etc.) here using an API key stored in an environment variable
- * (e.g. process.env.RESEND_API_KEY) — never hardcode credentials, and
- * never expose them to the client.
+ * Contact form submission endpoint. Sends the message to the site owner's
+ * inbox via Resend. Requires RESEND_API_KEY and CONTACT_RECEIVER_EMAIL to
+ * be set as environment variables (never hardcoded, never exposed to the
+ * client).
  */
 export async function POST(request: Request) {
   let body: unknown;
@@ -51,14 +58,50 @@ export async function POST(request: Request) {
     );
   }
 
-  // TODO: send the message using your email/contact service of choice.
-  // Example (pseudocode):
-  // await resend.emails.send({
-  //   from: "portfolio@yourdomain.com",
-  //   to: process.env.CONTACT_RECEIVER_EMAIL,
-  //   subject: `New portfolio message from ${body.name}`,
-  //   text: body.message,
-  // });
+  const apiKey = process.env.RESEND_API_KEY;
+  const receiverEmail = process.env.CONTACT_RECEIVER_EMAIL;
+
+  if (!apiKey || !receiverEmail) {
+    console.error(
+      "Contact form is not configured: missing RESEND_API_KEY or CONTACT_RECEIVER_EMAIL."
+    );
+    return NextResponse.json(
+      { error: "The contact form isn't set up yet. Please email directly instead." },
+      { status: 503 }
+    );
+  }
+
+  const { name, email, message } = body;
+
+  try {
+    const resend = new Resend(apiKey);
+    const { error } = await resend.emails.send({
+      from: "Portfolio Contact Form <onboarding@resend.dev>",
+      to: receiverEmail,
+      replyTo: email,
+      subject: `New portfolio message from ${name}`,
+      html: `
+        <p><strong>Name:</strong> ${escapeHtml(name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Message:</strong></p>
+        <p>${escapeHtml(message).replace(/\n/g, "<br />")}</p>
+      `,
+    });
+
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json(
+        { error: "Failed to send your message. Please try again later." },
+        { status: 502 }
+      );
+    }
+  } catch (error) {
+    console.error("Contact form send failed:", error);
+    return NextResponse.json(
+      { error: "Failed to send your message. Please try again later." },
+      { status: 502 }
+    );
+  }
 
   return NextResponse.json({ success: true }, { status: 200 });
 }

@@ -35,12 +35,23 @@ placeholder state.
 
 ## Connecting the Contact Form
 
-The contact form posts to `app/api/contact/route.ts`, which currently
-validates input and returns success without sending an email. To make it
-functional, wire up an email provider (e.g. Resend, SendGrid, Postmark)
-inside that route using an API key stored in an environment variable
-(`.env.local`, and the equivalent in your Vercel project settings) — never
-commit secrets or expose them to client-side code.
+The contact form is wired to send email via [Resend](https://resend.com).
+To make it functional:
+
+1. Sign up for a free Resend account at [resend.com](https://resend.com)
+   and create an API key.
+2. Copy `.env.local.example` to `.env.local` and fill in:
+   - `RESEND_API_KEY` — your Resend API key
+   - `CONTACT_RECEIVER_EMAIL` — the email address that should receive
+     messages submitted through the form
+3. Restart the dev server so the new environment variables are picked up.
+
+Until these are set, the form will show a clear error asking visitors to
+email you directly instead of silently failing.
+
+**Deploying to Vercel:** add the same two environment variables in your
+Vercel project's Settings → Environment Variables. Never commit `.env.local`
+or expose these values to client-side code — they are gitignored by default.
 
 ## Build & Deploy
 
@@ -50,5 +61,5 @@ npm run start
 ```
 
 Deploy directly to [Vercel](https://vercel.com) by importing this repository.
-No environment variables are required for the base site; add them only if
-you connect a contact-form email provider.
+Add `RESEND_API_KEY` and `CONTACT_RECEIVER_EMAIL` as environment variables
+in your Vercel project settings for the contact form to work in production.

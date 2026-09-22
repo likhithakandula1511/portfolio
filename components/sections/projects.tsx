@@ -52,14 +52,6 @@ export function Projects() {
                     >
                       View Project
                     </Link>
-                    <a
-                      href={featured.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="glass inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-medium text-text-secondary transition-colors hover:border-accent/50 hover:text-accent"
-                    >
-                      GitHub
-                    </a>
                   </div>
                 </div>
                 <div className="relative aspect-video lg:aspect-auto lg:h-full lg:min-h-[280px]">

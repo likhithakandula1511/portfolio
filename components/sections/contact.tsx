@@ -2,7 +2,6 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { ContactForm } from "@/components/contact-form";
 import {
-  GitHubIcon,
   LinkedInIcon,
   EmailIcon,
   WhatsAppIcon,
@@ -99,25 +98,6 @@ export function Contact() {
                   </p>
                   <p className="text-sm text-text-secondary">
                     Connect with me
-                  </p>
-                </div>
-              </a>
-
-              <a
-                href={social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 glass rounded-2xl p-5 shadow-card transition-all hover:border-accent/40 hover:shadow-glow"
-              >
-                <span className="glass flex h-10 w-10 items-center justify-center rounded-full text-accent">
-                  <GitHubIcon />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-text-primary">
-                    GitHub
-                  </p>
-                  <p className="text-sm text-text-secondary">
-                    View my repositories
                   </p>
                 </div>
               </a>

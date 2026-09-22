@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLinkIcon, GitHubIcon } from "@/components/ui/icons";
+import { ExternalLinkIcon } from "@/components/ui/icons";
 import type { Project } from "@/types/portfolio";
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -42,15 +42,6 @@ export function ProjectCard({ project }: { project: Project }) {
           >
             View Project
           </Link>
-          <a
-            href={project.githubUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`${project.name} GitHub repository`}
-            className="glass inline-flex items-center gap-1.5 rounded-full px-3 py-2 text-sm font-medium text-text-secondary transition-colors hover:border-accent/50 hover:text-accent"
-          >
-            <GitHubIcon width={16} height={16} />
-          </a>
           <a
             href={project.liveUrl}
             target="_blank"

@@ -34,8 +34,7 @@ const portfolioData: PortfolioData = {
   },
 
   social: {
-    github: "[ADD GITHUB URL]",
-    linkedin: "[ADD LINKEDIN URL]",
+    linkedin: "https://www.linkedin.com/in/kandula-likhitha-650b49251",
     email: "likhithakandula1511@gmail.com",
     phone: "+91 7095499986",
     whatsapp: "https://wa.me/917095499986",
@@ -45,22 +44,27 @@ const portfolioData: PortfolioData = {
     {
       category: "Backend",
       skills: ["Python", "FastAPI", "NestJS", "REST API Development", "API Integration"],
+      accent: "blue",
     },
     {
       category: "Frontend",
       skills: ["HTML", "CSS"],
+      accent: "purple",
     },
     {
       category: "Databases",
       skills: ["PostgreSQL", "MySQL", "MongoDB"],
+      accent: "teal",
     },
     {
       category: "Cloud / Deployment",
       skills: ["AWS S3", "Cloudinary"],
+      accent: "gold",
     },
     {
       category: "Tools",
       skills: ["Git", "Postman", "Swagger"],
+      accent: "red",
     },
     {
       category: "Professional Skills",
@@ -70,6 +74,7 @@ const portfolioData: PortfolioData = {
         "Workflow Automation (Temporal)",
         "Third-Party Integrations (Meta Developer APIs, Shotstack API)",
       ],
+      accent: "blue",
     },
   ],
 
@@ -102,7 +107,6 @@ const portfolioData: PortfolioData = {
         "JWT authentication, request validation, error handling, and API logging",
       ],
       role: "Software Developer",
-      githubUrl: "[ADD GITHUB LINK]",
       liveUrl: "[ADD LIVE DEMO LINK]",
       image: "/projects/project-placeholder.svg",
       featured: true,
@@ -151,7 +155,6 @@ const portfolioData: PortfolioData = {
         "Standardized API responses with validation and exception handling",
       ],
       role: "Backend Developer",
-      githubUrl: "[ADD GITHUB LINK]",
       liveUrl: "[ADD LIVE DEMO LINK]",
       image: "/projects/project-placeholder.svg",
       featured: false,
@@ -191,7 +194,6 @@ const portfolioData: PortfolioData = {
         "Model-based prediction for improved positioning accuracy",
       ],
       role: "Developer / Researcher",
-      githubUrl: "[ADD GITHUB LINK]",
       liveUrl: "[ADD LIVE DEMO LINK]",
       image: "/projects/project-placeholder.svg",
       featured: false,
@@ -228,7 +230,6 @@ const portfolioData: PortfolioData = {
         "System monitoring",
       ],
       role: "Developer",
-      githubUrl: "[ADD GITHUB LINK]",
       liveUrl: "[ADD LIVE DEMO LINK]",
       image: "/projects/project-placeholder.svg",
       featured: false,
@@ -264,7 +265,6 @@ const portfolioData: PortfolioData = {
         "Server/municipal corporation reporting to help avoid odor and disease from overflowing garbage",
       ],
       role: "Developer",
-      githubUrl: "[ADD GITHUB LINK]",
       liveUrl: "[ADD LIVE DEMO LINK]",
       image: "/projects/project-placeholder.svg",
       featured: false,
@@ -345,6 +345,7 @@ const portfolioData: PortfolioData = {
       startDate: "September 2022",
       endDate: "March 2025",
       details: ["CGPA: 8.6"],
+      accent: "blue",
     },
     {
       degree: "Diploma in Electronics and Communication Engineering",
@@ -353,6 +354,7 @@ const portfolioData: PortfolioData = {
       startDate: "June 2019",
       endDate: "May 2022",
       details: ["88.24%"],
+      accent: "purple",
     },
     {
       degree: "SSC",
@@ -361,6 +363,7 @@ const portfolioData: PortfolioData = {
       startDate: "June 2018",
       endDate: "March 2019",
       details: ["CGPA: 10"],
+      accent: "teal",
     },
   ],
 
@@ -369,24 +372,29 @@ const portfolioData: PortfolioData = {
       title: "Dance",
       description:
         "Classical and western dance, performed and practiced over several years.",
+      accent: "purple",
     },
     {
       title: "YouTube Channel",
       description:
         "Run a YouTube channel focused on dance content with 600+ subscribers.",
+      accent: "red",
     },
     {
       title: "Singing",
       description: "Singing as a personal creative outlet.",
+      accent: "teal",
     },
     {
       title: "Content Creation",
       description:
         "Creating and producing content, including planning and shooting videos.",
+      accent: "gold",
     },
     {
       title: "Video Editing",
       description: "Editing video content for the YouTube channel and other projects.",
+      accent: "blue",
     },
   ],
 };

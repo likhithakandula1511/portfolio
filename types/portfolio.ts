@@ -1,5 +1,6 @@
+export type AccentColor = "purple" | "red" | "teal" | "gold" | "blue";
+
 export interface SocialLinks {
-  github: string;
   linkedin: string;
   email: string;
   phone: string;
@@ -22,6 +23,7 @@ export interface PersonalInfo {
 export interface SkillCategory {
   category: string;
   skills: string[];
+  accent: AccentColor;
 }
 
 export interface ProjectDetailSection {
@@ -45,7 +47,6 @@ export interface Project {
   technologies: string[];
   mainFeatures: string[];
   role: string;
-  githubUrl: string;
   liveUrl: string;
   image: string;
   featured: boolean;
@@ -71,11 +72,13 @@ export interface EducationEntry {
   startDate: string;
   endDate: string;
   details: string[];
+  accent: AccentColor;
 }
 
 export interface HobbyEntry {
   title: string;
   description: string;
+  accent: AccentColor;
 }
 
 export interface PortfolioData {

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { LinkButton } from "@/components/ui/button";
-import { ArrowLeftIcon, GitHubIcon, ExternalLinkIcon } from "@/components/ui/icons";
+import { ArrowLeftIcon, ExternalLinkIcon } from "@/components/ui/icons";
 import type { Project } from "@/types/portfolio";
 
 function DetailBlock({
@@ -50,10 +50,6 @@ export function ProjectDetail({ project }: { project: Project }) {
         </div>
 
         <div className="mt-6 flex flex-wrap gap-3">
-          <LinkButton href={project.githubUrl} external variant="outline">
-            <GitHubIcon width={16} height={16} />
-            View on GitHub
-          </LinkButton>
           <LinkButton href={project.liveUrl} external variant="primary">
             <ExternalLinkIcon />
             Live Demo

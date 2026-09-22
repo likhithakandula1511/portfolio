@@ -1,5 +1,5 @@
 import portfolioData from "@/data/portfolio";
-import { GitHubIcon, LinkedInIcon, EmailIcon } from "@/components/ui/icons";
+import { LinkedInIcon, EmailIcon } from "@/components/ui/icons";
 
 export function Footer() {
   const { personal, social } = portfolioData;
@@ -22,15 +22,6 @@ export function Footer() {
 
         <div className="flex flex-col items-center gap-4 sm:items-end">
           <div className="flex gap-3">
-            <a
-              href={social.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub profile"
-              className="rounded-md p-2 text-text-muted transition-colors hover:text-accent"
-            >
-              <GitHubIcon />
-            </a>
             <a
               href={social.linkedin}
               target="_blank"

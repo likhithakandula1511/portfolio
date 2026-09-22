@@ -2,6 +2,8 @@ import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { Particles } from "@/components/ui/particles";
 import { Waves } from "@/components/ui/waves";
+import { ACCENT_STYLES } from "@/components/ui/accent-card";
+import { GraduationCapIcon } from "@/components/ui/icons";
 import portfolioData from "@/data/portfolio";
 
 export function Education() {
@@ -17,39 +19,59 @@ export function Education() {
         </Reveal>
 
         <div className="mt-12 space-y-6">
-          {education.map((entry, index) => (
-            <Reveal key={`${entry.institution}-${entry.startDate}`} delay={index * 100}>
-              <div className="glass rounded-2xl p-6 shadow-card sm:p-8">
-                <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
-                  <div>
-                    <h3 className="text-lg font-semibold text-text-primary">
-                      {entry.degree}
-                    </h3>
-                    <p className="text-sm font-semibold text-accent">
-                      {entry.institution} &middot; {entry.location}
-                    </p>
-                  </div>
-                  <p className="whitespace-nowrap text-sm font-medium text-text-muted">
-                    {entry.startDate} &ndash; {entry.endDate}
-                  </p>
-                </div>
+          {education.map((entry, index) => {
+            const styles = ACCENT_STYLES[entry.accent];
+            return (
+              <Reveal
+                key={`${entry.institution}-${entry.startDate}`}
+                delay={index * 100}
+              >
+                <div
+                  className="glass rounded-2xl p-6 shadow-card sm:p-8"
+                  style={{ borderLeft: `3px solid ${styles.border}` }}
+                >
+                  <div className="flex items-start gap-4">
+                    <span
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-bg-inverse"
+                      style={{ background: styles.iconBg }}
+                    >
+                      <GraduationCapIcon width={20} height={20} />
+                    </span>
 
-                {entry.details.length > 0 && (
-                  <ul className="mt-4 space-y-1.5">
-                    {entry.details.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2 text-sm text-text-secondary"
-                      >
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-            </Reveal>
-          ))}
+                    <div className="flex-1">
+                      <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:justify-between">
+                        <div>
+                          <h3 className="text-lg font-semibold text-text-primary">
+                            {entry.degree}
+                          </h3>
+                          <p className="text-sm font-semibold text-accent">
+                            {entry.institution} &middot; {entry.location}
+                          </p>
+                        </div>
+                        <p className="whitespace-nowrap text-sm font-medium text-text-muted">
+                          {entry.startDate} &ndash; {entry.endDate}
+                        </p>
+                      </div>
+
+                      {entry.details.length > 0 && (
+                        <ul className="mt-4 space-y-1.5">
+                          {entry.details.map((item) => (
+                            <li
+                              key={item}
+                              className="flex items-start gap-2 text-sm text-text-secondary"
+                            >
+                              <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                              {item}
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
