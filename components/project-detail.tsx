@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
-import { LinkButton } from "@/components/ui/button";
-import { ArrowLeftIcon, ExternalLinkIcon } from "@/components/ui/icons";
+import { ArrowLeftIcon } from "@/components/ui/icons";
+import { PrivateBadge } from "@/components/ui/private-badge";
 import type { Project } from "@/types/portfolio";
 
 function DetailBlock({
@@ -14,7 +14,7 @@ function DetailBlock({
 }) {
   return (
     <div>
-      <h2 className="text-xl font-semibold text-text-primary">{title}</h2>
+      <h2 className="text-xl font-semibold uppercase tracking-wide text-accent-blue">{title}</h2>
       <div className="mt-3 text-base leading-relaxed text-text-secondary">
         {children}
       </div>
@@ -36,6 +36,11 @@ export function ProjectDetail({ project }: { project: Project }) {
       </Link>
 
       <header className="mt-6">
+        {project.isPrivate && (
+          <div className="mb-4">
+            <PrivateBadge />
+          </div>
+        )}
         <h1 className="text-3xl font-bold tracking-tight text-text-primary sm:text-4xl">
           {project.name}
         </h1>
@@ -47,13 +52,6 @@ export function ProjectDetail({ project }: { project: Project }) {
           {project.technologies.map((tech) => (
             <Badge key={tech}>{tech}</Badge>
           ))}
-        </div>
-
-        <div className="mt-6 flex flex-wrap gap-3">
-          <LinkButton href={project.liveUrl} external variant="primary">
-            <ExternalLinkIcon />
-            Live Demo
-          </LinkButton>
         </div>
       </header>
 
@@ -76,7 +74,7 @@ export function ProjectDetail({ project }: { project: Project }) {
       </div>
 
       <div className="mt-12 glass rounded-2xl p-6 sm:p-8">
-        <h2 className="text-xl font-semibold text-text-primary">
+        <h2 className="text-xl font-semibold uppercase tracking-wide text-accent-blue">
           Technology Stack
         </h2>
         <dl className="mt-6 grid gap-6 sm:grid-cols-2">
@@ -117,7 +115,7 @@ export function ProjectDetail({ project }: { project: Project }) {
 
       <div className="mt-12 grid gap-10 lg:grid-cols-2">
         <div>
-          <h2 className="text-xl font-semibold text-text-primary">
+          <h2 className="text-xl font-semibold uppercase tracking-wide text-accent-blue">
             Main Features
           </h2>
           <ul className="mt-4 space-y-2">
@@ -134,7 +132,7 @@ export function ProjectDetail({ project }: { project: Project }) {
         </div>
 
         <div>
-          <h2 className="text-xl font-semibold text-text-primary">
+          <h2 className="text-xl font-semibold uppercase tracking-wide text-accent-blue">
             User Workflow
           </h2>
           <ol className="mt-4 space-y-2">
@@ -153,43 +151,35 @@ export function ProjectDetail({ project }: { project: Project }) {
         </div>
       </div>
 
-      {project.screenshots.length > 0 && (
-        <div className="mt-12">
-          <h2 className="text-xl font-semibold text-text-primary">
-            Screenshots
-          </h2>
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            {project.screenshots.map((src, index) => (
-              <div
-                key={`${src}-${index}`}
-                className="relative aspect-video overflow-hidden glass rounded-xl shadow-card"
-              >
-                <Image
-                  src={src}
-                  alt={`${project.name} screenshot ${index + 1}`}
-                  fill
-                  sizes="(min-width: 640px) 50vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
       <div className="mt-12">
-        <h2 className="text-xl font-semibold text-text-primary">
-          Architecture / Workflow Diagram
+        <h2 className="text-xl font-semibold uppercase tracking-wide text-accent-blue">
+          Process Flow
         </h2>
-        <div className="relative mt-6 aspect-video w-full overflow-hidden glass rounded-xl shadow-card">
-          <Image
-            src={detail.architectureDiagram}
-            alt={`${project.name} architecture diagram`}
-            fill
-            sizes="100vw"
-            className="object-cover"
-          />
-        </div>
+        <ol className="mt-6 flex flex-col items-center gap-3 lg:flex-row lg:flex-wrap">
+          {detail.processFlow.map((step, index) => (
+            <li
+              key={step}
+              className="flex w-full flex-col items-center gap-3 lg:w-auto lg:flex-row"
+            >
+              <div className="glass w-full rounded-xl px-5 py-4 text-center shadow-card lg:w-52">
+                <span className="block text-xs font-semibold uppercase tracking-wide text-accent-blue">
+                  Step {index + 1}
+                </span>
+                <span className="mt-1 block text-sm text-text-secondary">
+                  {step}
+                </span>
+              </div>
+              {index < detail.processFlow.length - 1 && (
+                <span
+                  aria-hidden="true"
+                  className="rotate-90 text-2xl text-accent-blue lg:rotate-0"
+                >
+                  →
+                </span>
+              )}
+            </li>
+          ))}
+        </ol>
       </div>
     </article>
   );

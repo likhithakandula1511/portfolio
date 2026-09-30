@@ -9,13 +9,16 @@ interface ProjectPageProps {
   params: Promise<{ slug: string }>;
 }
 
+// Private projects are shown only as cards; they get no detail page.
+const publicProjects = portfolioData.projects.filter((p) => !p.isPrivate);
+
 export function generateStaticParams() {
-  return portfolioData.projects.map((project) => ({ slug: project.slug }));
+  return publicProjects.map((project) => ({ slug: project.slug }));
 }
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = portfolioData.projects.find((p) => p.slug === slug);
+  const project = publicProjects.find((p) => p.slug === slug);
   if (!project) return { title: "Project Not Found" };
 
   return {
@@ -30,7 +33,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = portfolioData.projects.find((p) => p.slug === slug);
+  const project = publicProjects.find((p) => p.slug === slug);
 
   if (!project) {
     notFound();

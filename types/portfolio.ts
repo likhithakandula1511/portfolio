@@ -37,20 +37,25 @@ export interface ProjectDetailSection {
   apis: string;
   mainFeatures: string[];
   userWorkflow: string[];
-  architectureDiagram: string;
+  processFlow: string[];
 }
 
 export interface Project {
   slug: string;
   name: string;
   shortDescription: string;
+  /** Full, clear bullets of your own work — shown in the Experience section. */
+  whatIDid: string[];
+  /** Basic one-line summary — shown on the project card. */
+  cardSummary: string;
+  /** Basic short bullets — shown on the project card. */
+  cardHighlights: string[];
   technologies: string[];
   mainFeatures: string[];
   role: string;
-  liveUrl: string;
   image: string;
   featured: boolean;
-  screenshots: string[];
+  isPrivate: boolean;
   detail: ProjectDetailSection;
 }
 
@@ -63,6 +68,8 @@ export interface ExperienceEntry {
   responsibilities: string[];
   achievements: string[];
   technologies: string[];
+  /** Slugs of projects (from `projects`) built in this role. */
+  projectSlugs: string[];
 }
 
 export interface EducationEntry {

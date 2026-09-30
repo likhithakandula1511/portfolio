@@ -4,7 +4,9 @@ import portfolioData from "@/data/portfolio";
 const siteUrl = "https://kandulalikhitha.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const projectRoutes = portfolioData.projects.map((project) => ({
+  const projectRoutes = portfolioData.projects
+    .filter((project) => !project.isPrivate)
+    .map((project) => ({
     url: `${siteUrl}/projects/${project.slug}`,
     lastModified: new Date(),
   }));

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Reveal } from "@/components/ui/reveal";
 import { Badge } from "@/components/ui/badge";
@@ -6,7 +7,7 @@ import { Waves } from "@/components/ui/waves";
 import portfolioData from "@/data/portfolio";
 
 export function Experience() {
-  const { experience } = portfolioData;
+  const { experience, projects } = portfolioData;
 
   return (
     <section id="experience" className="bg-ambient section-padding bg-bg">
@@ -40,6 +41,54 @@ export function Experience() {
                     {entry.startDate} &ndash; {entry.endDate}
                   </p>
                 </div>
+
+                {entry.projectSlugs.length > 0 && (
+                  <div className="mt-4">
+                    <p className="text-xs font-semibold uppercase tracking-wide text-text-muted">
+                      Projects
+                    </p>
+                    <div className="mt-3 space-y-4">
+                      {projects
+                        .filter((project) => entry.projectSlugs.includes(project.slug))
+                        .map((project) => (
+                          <div
+                            key={project.slug}
+                            className="rounded-xl border border-edge bg-bg/40 p-4 sm:p-5"
+                          >
+                            <h4 className="text-base font-semibold text-accent-blue">
+                              {project.isPrivate ? (
+                                project.name
+                              ) : (
+                                <Link
+                                  href={`/projects/${project.slug}`}
+                                  className="hover:underline"
+                                >
+                                  {project.name}
+                                </Link>
+                              )}
+                            </h4>
+                            <p className="mt-1 text-sm text-text-secondary">
+                              {project.shortDescription}
+                            </p>
+                            <p className="mt-3 text-xs font-semibold uppercase tracking-wide text-text-muted">
+                              What I Did
+                            </p>
+                            <ul className="mt-2 space-y-1.5">
+                              {project.whatIDid.map((item) => (
+                                <li
+                                  key={item}
+                                  className="flex items-start gap-2 text-sm text-text-secondary"
+                                >
+                                  <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                                  {item}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))}
+                    </div>
+                  </div>
+                )}
 
                 {entry.responsibilities.length > 0 && (
                   <div className="mt-4">
