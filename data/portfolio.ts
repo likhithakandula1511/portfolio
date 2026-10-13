@@ -30,7 +30,9 @@ const portfolioData: PortfolioData = {
     ],
     location: "[ADD YOUR LOCATION]",
     profileImage: "/images/profile.jpg",
-    resumeUrl: "/resume.pdf",
+    // Paste your Google Drive share link here (Share → "Anyone with the link" → Viewer).
+    // Update the file in Drive anytime; the link stays the same. Falls back to /public/resume.pdf.
+    resumeUrl: "https://drive.google.com/drive/folders/1G8FzZ_AzeAjJYgjRgHvU5QbV0c7GC1pQ",
   },
 
   social: {

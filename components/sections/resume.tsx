@@ -4,11 +4,11 @@ import { LinkButton } from "@/components/ui/button";
 import { DownloadIcon } from "@/components/ui/icons";
 import { Particles } from "@/components/ui/particles";
 import { Waves } from "@/components/ui/waves";
-import { resumeFileExists } from "@/lib/resume";
+import { resumeAvailable } from "@/lib/resume";
 import portfolioData from "@/data/portfolio";
 
 export function Resume() {
-  const hasResume = resumeFileExists();
+  const hasResume = resumeAvailable(portfolioData.personal.resumeUrl);
 
   return (
     <section id="resume" className="bg-ambient section-padding bg-bg">
@@ -44,11 +44,12 @@ export function Resume() {
             ) : (
               <>
                 <p className="text-sm text-text-secondary">
-                  Resume coming soon. Add your PDF at{" "}
+                  Resume coming soon. Set{" "}
                   <code className="rounded bg-bg-elevated px-1.5 py-0.5 text-xs text-text-secondary">
-                    /public/resume.pdf
+                    resumeUrl
                   </code>{" "}
-                  to enable the download button.
+                  in data/portfolio.ts to a Google Drive link to enable the
+                  download button.
                 </p>
                 <span
                   aria-disabled="true"
