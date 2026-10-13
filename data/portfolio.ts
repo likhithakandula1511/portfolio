@@ -14,9 +14,9 @@ const portfolioData: PortfolioData = {
     displayName: "Kandula Likhitha",
     headline: "Software Developer — Generative AI & LLM Integration, Python, FastAPI",
     shortIntro:
-      "Software Developer with 1.5+ years of experience building Python (FastAPI) and NestJS backend services, REST APIs, and Generative AI features — integrating OpenAI GPT, Anthropic Claude, and Google Gemini into production media and enterprise applications.",
+      "Software Developer with 1.5 years of experience building Python (FastAPI) and NestJS backend services, REST APIs, and Generative AI features — integrating OpenAI GPT, Anthropic Claude, and Google Gemini into production media and enterprise applications.",
     aboutIntro:
-      "I'm a Software Developer with 1.5+ years of experience at LakkshionsIT, building Python (FastAPI) and NestJS backend services, REST APIs, and Generative AI features for media and enterprise applications. I integrate OpenAI GPT, Anthropic Claude, and Google Gemini LLM APIs and fal.ai generative media models into production workflows — for caption generation, content summarization and tagging, prompt enhancement, text-to-image, and image/text-to-video. I'm hands-on with PostgreSQL, MySQL, MongoDB, AWS S3, event-driven processing (SQS, Celery, Temporal), JWT/RBAC security, Docker, Kubernetes, and GitLab CI/CD.",
+      "I'm a Software Developer with 1.5 years of experience at LakkshionsIT, building Python (FastAPI) and NestJS backend services, REST APIs, and Generative AI features for media and enterprise applications. I integrate OpenAI GPT, Anthropic Claude, and Google Gemini LLM APIs and fal.ai generative media models into production workflows — for caption generation, content summarization and tagging, prompt enhancement, text-to-image, and image/text-to-video. I'm hands-on with PostgreSQL, MySQL, MongoDB, AWS S3, event-driven processing (SQS, Celery, Temporal), JWT/RBAC security, Docker, Kubernetes, and GitLab CI/CD.",
     careerInterests: [
       "Generative AI and LLM-powered applications",
       "Backend development and API design",
