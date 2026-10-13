@@ -16,7 +16,7 @@ export function Footer() {
             {personal.headline}
           </p>
           <p className="mt-3 text-sm font-medium text-accent">
-            Python &bull; FastAPI &bull; Database &bull; REST API
+            Python &bull; FastAPI &bull; Generative AI &bull; LLMs
           </p>
         </div>
 

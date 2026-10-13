@@ -4,7 +4,7 @@ import {
   CodeBracketsIcon,
   BoltIcon,
   DatabaseIcon,
-  CloudIcon,
+  SparklesIcon,
 } from "@/components/ui/icons";
 import portfolioData from "@/data/portfolio";
 
@@ -28,8 +28,8 @@ const HERO_BADGES = [
     style: { bottom: "22%", left: "6%" },
   },
   {
-    label: "REST APIs",
-    icon: CloudIcon,
+    label: "GenAI & LLMs",
+    icon: SparklesIcon,
     iconBg: "linear-gradient(135deg, #3B82F6, #22D3EE)",
     style: { bottom: "14%", right: "6%" },
   },
